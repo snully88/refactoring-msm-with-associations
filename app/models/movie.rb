@@ -16,7 +16,9 @@ class Movie < ApplicationRecord
   validates(:director_id, presence: true)
   validates(:title, uniqueness: true)
 
-  belongs_to(:zebra, class_name: "Director", foreign_key: "director_id")
+  belongs_to(:director, class_name: "Director", foreign_key: "director_id")
+  has_many(:characters, :class_name => "Character", :foreign_key => "movie_id")
+  
 end
 
 def zebra
